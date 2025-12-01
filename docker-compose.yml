@@ -1,6 +1,6 @@
 services:
   database:
-    image: ${DOCKER_IMG_NAME}:${DOKCER_IMG_TAG}
+    image: ${DOCKER_IMG_NAME}:${DOCKER_IMG_TAG}
     volumes:
       - database_volume:/var/lib/mysql
       - ./my.cnf:/etc/my.cnf
