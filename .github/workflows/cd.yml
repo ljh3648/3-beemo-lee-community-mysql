@@ -67,10 +67,10 @@ jobs:
               cd ~/app/database
               export DOCKER_IMG_NAME=${{ vars.DOCKER_IMG_NAME }}
               export DOCKER_IMG_TAG=${{ vars.DOCKER_IMG_TAG }}
-              export MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}
-              export MYSQL_DATABASE=${{ vars.MYSQL_DATABASE }}
-              export MYSQL_USER=${{ vars.MYSQL_USER }}
-              export MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}
+              export DATABASE_ROOT_PASSWORD=${{ secrets.DATABASE_ROOT_PASSWORD }}
+              export DATABASE_SCHEMA=${{ vars.DATABASE_SCHEMA }}
+              export DATABASE_USER=${{ vars.DATABASE_USER }}
+              export DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
               export DATABASE_PORT=${{ vars.DATABASE_PORT }}
               export HOST_PORT=${{ vars.HOST_PORT }}
               docker compose down
