@@ -12,6 +12,7 @@ services:
       - MYSQL_TCP_PORT=${DATABASE_PORT}
     ports:
       - ${HOST_PORT}:${DATABASE_PORT}
+    restart: always
 
 volumes:
   database_volume:
