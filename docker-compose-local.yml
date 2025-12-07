@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # 독립 실행용 DB
+  mysql:
+    image: mysql:8.0
+    container_name: database-local
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD:-1234}
+      MYSQL_DATABASE: ${DATABASE_SCHEMA:-community}
+      MYSQL_USER: ${DATABASE_USER:-community_user}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD:-1234}
+    ports:
+      - "${DATABASE_PORT:-3306}:3306"
+    volumes:
+      - mysql_data_local:/var/lib/mysql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+volumes:
+  mysql_data_local:
+
+# [실행 방법]
+# 1. cp .env.example .env
+# 2. docker compose -f docker-compose-local.yml up -d
